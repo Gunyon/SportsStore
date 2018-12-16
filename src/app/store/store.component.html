@@ -4,12 +4,54 @@
       <a href="#" class="navbar-brand">SPROTS STORE</a>
     </div>
   </div>
-  <div class="row text-white">
-    <div class="col-3 bg-info p-2">
-      {{ categories.length }} Catergories
+  <div class="row">
+    <!-- CATEGORIES -->
+    <div class="col-3 p-2">
+      <button
+        class="btn btn-block btn-outline-primary"
+        [class.active]="!selectedCategory"
+        (click)="changeCategory()">All categories</button>
+      <button
+        *ngFor="let cat of categories"
+        class="btn btn-block btn-outline-primary"
+        [class.active]="cat == selectedCategory"
+        (click)="changeCategory(cat)">
+        {{ cat }}
+      </button>
     </div>
-    <div class="col-9 bg-success p-2">
-      {{ products.length }} Products
+    <!-- PRODUCTS -->
+    <div class="col-9 p-2">
+      <div class="card m-1 p-1 bg-light border-primary" *ngFor="let product of products">
+        <h4>
+          {{ product.name }}
+          <span class="badge badge-pill badge-primary float-right">
+            {{ product.price | currency:'USD':'symbol':'2.2-2' }}
+          </span>
+        </h4>
+        <div class="card-text bg-white p-1">
+          {{ product.description }}
+        </div>
+      </div>
+
+      <!-- PAGINATION -->
+      <div class="form-inline float-left mr-1">
+        <select class="form-control" [value]="productsPerPage"
+          (change)="changePageSize($event.target.value)">
+          <option value="3">3 per page</option>
+          <option value="4">4 per page</option>
+          <option value="6">6 per page</option>
+          <option value="8">8 per page</option>
+        </select>
+      </div>
+
+      <div class="btn-group float-right">
+        <button
+          class="btn btn-outline-primary"
+          *appCounter="let page of pageCount"
+          (click)="changePage(page)">
+          {{ page }}
+        </button>
+      </div>
     </div>
   </div>
 </div>
