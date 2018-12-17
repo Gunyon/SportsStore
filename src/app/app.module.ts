@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { StoreModule } from './store/store.module';
+import { AppRoutingModule } from './app-routing.module';
+import { StoreFirstGuard } from './store-first.guard';
 
 @NgModule({
   declarations: [
@@ -10,9 +12,12 @@ import { StoreModule } from './store/store.module';
   ],
   imports: [
     BrowserModule,
-    StoreModule
+    StoreModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    StoreFirstGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
