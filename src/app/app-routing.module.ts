@@ -7,6 +7,11 @@ import { CartDetailComponent } from './store/cart-detail.component';
 import { StoreFirstGuard } from './store-first.guard';
 
 const routes: Routes = [
+  {
+    path: 'admin',
+    loadChildren: './admin/admin.module#AdminModule',
+    canActivate: [StoreFirstGuard]
+  },
   { path: 'store', component: StoreComponent, canActivate: [StoreFirstGuard] },
   { path: 'cart', component: CartDetailComponent, canActivate: [StoreFirstGuard] },
   { path: 'checkout', component: CheckoutComponent, canActivate: [StoreFirstGuard] },
