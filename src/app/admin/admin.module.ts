@@ -6,11 +6,17 @@ import { FormsModule } from '@angular/forms';
 import { AuthComponent } from './auth.component';
 import { AdminComponent } from './admin.component';
 import { AuthGuard } from './auth.guard';
+import { ProductTableComponent } from './product-table.component';
+import { ProductEditorComponent } from './product-editor.component';
+import { OrderTableComponent } from './order-table.component';
 
 @NgModule({
   declarations: [
     AuthComponent,
-    AdminComponent
+    AdminComponent,
+    ProductTableComponent,
+    ProductEditorComponent,
+    OrderTableComponent
   ],
   imports: [
     CommonModule,
